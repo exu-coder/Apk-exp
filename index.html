@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0d">
+  <title>Farabi Admin — Applications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="shell">
+    <section id="loginView" class="login glass">
+      <div class="brand-mark">F</div>
+      <span class="eyebrow">FARABI IT CENTER</span>
+      <h1>Admin Console</h1>
+      <p>Secure access to course applications.</p>
+      <form id="loginForm">
+        <label>Email<input id="email" type="email" autocomplete="email" required placeholder="admin@email.com"></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="••••••••"></label>
+        <button class="primary" type="submit">Sign in <span>→</span></button>
+      </form>
+      <div id="loginError" class="error"></div>
+    </section>
+
+    <section id="appView" hidden>
+      <header class="topbar glass">
+        <div><span class="eyebrow">FARABI IT CENTER</span><h2>Applications</h2></div>
+        <div class="top-actions"><span id="userEmail" class="user-pill"></span><button id="logout" class="ghost">Sign out</button></div>
+      </header>
+
+      <section class="stats">
+        <article class="stat glass"><span>Total</span><strong id="total">0</strong></article>
+        <article class="stat glass"><span>Pending</span><strong id="pending">0</strong></article>
+        <article class="stat glass"><span>Approved</span><strong id="approved">0</strong></article>
+        <article class="stat glass"><span>Rejected</span><strong id="rejected">0</strong></article>
+      </section>
+
+      <section class="toolbar glass">
+        <input id="search" placeholder="Search name, phone, email or course…">
+        <select id="statusFilter"><option value="all">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select>
+        <button id="refresh" class="ghost">↻ Refresh</button>
+      </section>
+
+      <section class="table-card glass">
+        <div class="table-head"><div><span class="eyebrow">LIVE DATA</span><h3>Course applications</h3></div><span id="updated" class="muted"></span></div>
+        <div id="loading" class="loading">Loading applications…</div>
+        <div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Contact</th><th>Course</th><th>Status</th><th>Submitted</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+        <div id="empty" class="empty" hidden>No applications found.</div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="detailDialog" class="glass-dialog"><div class="dialog-inner"><button id="closeDialog" class="close">×</button><span class="eyebrow">APPLICATION</span><h2 id="detailName">—</h2><div id="detailBody"></div></div></dialog>
+  <div id="toast" class="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
